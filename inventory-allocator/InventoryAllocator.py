@@ -32,23 +32,26 @@ class InventoryAllocator(object):
 
         return res if not total else []
 
-#case 1: one warehouse is enough
-orders1 = { 'apple':1 ,'banana':2}
-w1 = [{'name': 'owd', 'inventory': {'apple': 1,'banana':2}}]
+if __name__ == '__main__':
 
-#case 2: total stock is not enough for orders, then output empty
-orders2 = {'apple':5,'kiwi':2}
-w2 = [{'name': 'eve', 'inventory': {'kiwi': 1,'banana':2}},{'name': 'ded', 'inventory': {'apple': 3}}]
+    #case 1: one warehouse is enough
+    orders1 = { 'apple':1 ,'banana':2}
+    w1 = [{'name': 'owd', 'inventory': {'apple': 1,'banana':2}}]
 
-#case 3: some items in orders need to be seperated from different warehouses
-orders3 = {'apple':5,'banana':2}
-w3 = [{'name': 'owd', 'inventory': {'apple': 2,'banana':2}},{'name': 'ded', 'inventory': {'apple': 3}}]
+    #case 2: total stock is not enough for orders, then output empty
+    orders2 = {'apple':5,'kiwi':2}
+    w2 = [{'name': 'eve', 'inventory': {'kiwi': 1,'banana':2}},{'name': 'ded', 'inventory': {'apple': 3}}]
 
-#case 4: we only take what we need in some warehouses not all of the stock in these warehouses
-orders4 = {'apple':5,'kiwi':2,'banana':3}
-w4 = [{'name': 'owd', 'inventory': {'apple': 2,'banana':2,'prune':2}},{'name': 'eve', 'inventory': {'kiwi': 2,'banana':2}},{'name': 'ded', 'inventory': {'apple': 3}}]
+    #case 3: some items in orders need to be seperated from different warehouses
+    orders3 = {'apple':5,'banana':2}
+    w3 = [{'name': 'owd', 'inventory': {'apple': 2,'banana':2}},{'name': 'ded', 'inventory': {'apple': 3}}]
 
-#case 5:the warehouses which do not have what we want is useless
-orders5 = {'apple':3,'prune':3}
-w5 = [{'name': 'owd', 'inventory': {'apple': 2,'banana':2}},{'name': 'ded', 'inventory': {'kiwi': 3,'banana':3}},{'name': 'eve', 'inventory': {'prune': 3,'apple':2}}]
+    #case 4: we only take what we need in some warehouses not all of the stock in these warehouses
+    orders4 = {'apple':5,'kiwi':2,'banana':3}
+    w4 = [{'name': 'owd', 'inventory': {'apple': 2,'banana':2,'prune':2}},{'name': 'eve', 'inventory': {'kiwi': 2,'banana':2}},{'name': 'ded', 'inventory': {'apple': 3}}]
 
+    #case 5:the warehouses which do not have what we want is useless
+    orders5 = {'apple':3,'prune':3}
+    w5 = [{'name': 'owd', 'inventory': {'apple': 2,'banana':2}},{'name': 'ded', 'inventory': {'kiwi': 3,'banana':3}},{'name': 'eve', 'inventory': {'prune': 3,'apple':2}}]
+
+    print(InventoryAllocator.cheapestcost(orders3,w3))
