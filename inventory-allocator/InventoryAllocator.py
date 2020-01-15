@@ -1,6 +1,6 @@
 
-class InventoryAllocator:
-
+class InventoryAllocator(object):
+    @classmethod
     def cheapestcost(self,orders, warehouses):
         # get total numbers of items
         total = sum(orders.values())
@@ -12,7 +12,6 @@ class InventoryAllocator:
             #iterate each warehouse from cheapiest cost to highest cost
             dic = {}
 
-            f = False
             items = warehouses[i]['inventory']
 
             for j in items:
@@ -24,7 +23,7 @@ class InventoryAllocator:
                 dic[j] = take
                 orders[j] -= take
                 total -= take
-            if f:
+            if len(dic) > 0:
                 w = {warehouses[i]['name']: dic}
                 res.append(w)
             # once all items are satisfied, we will mark and break the loop
@@ -53,6 +52,3 @@ w4 = [{'name': 'owd', 'inventory': {'apple': 2,'banana':2,'prune':2}},{'name': '
 orders5 = {'apple':3,'prune':3}
 w5 = [{'name': 'owd', 'inventory': {'apple': 2,'banana':2}},{'name': 'ded', 'inventory': {'kiwi': 3,'banana':3}},{'name': 'eve', 'inventory': {'prune': 3,'apple':2}}]
 
-
-ia = InventoryAllocator()
-print(ia.cheapestcost(orders4, w4))
